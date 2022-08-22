@@ -16,8 +16,8 @@ class FruitViewController: UIViewController
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var pronounceButton: UIButton!
     
-    //不使用直接宣告array，使用列舉產生陣列
-    //let qnaArray = ["apple", "banana", "blueberry", "cantaloupe", "cherry", "coconut", "grape", "kiwi", "lemon", "lime", "mango", "orange", "peach", ]
+    //不使用enum直接宣告array
+    //let fruitsArray = ["apple", "banana", "blueberry", "cantaloupe", "cherry", "coconut", "grape", "kiwi", "lemon", "lime", "mango", "orange", "peach", ]
 
     
     var index = 0
@@ -33,6 +33,8 @@ class FruitViewController: UIViewController
             let oneFruit = fruit.rawValue
             fruitsArray.append(oneFruit)
         }
+        //測試陣列是否成功產生
+        print(fruitsArray)
     }
     
     //顯示題目、題數、隱藏答案
@@ -54,7 +56,7 @@ class FruitViewController: UIViewController
         index = 0
         aQuestion()
         //遊戲開始前顯示的訊息
-        answerLabel.text = "Are you ready?"
+        answerLabel.text = "Ready?"
     }
     
     //結束遊戲的訊息視窗
@@ -87,7 +89,7 @@ class FruitViewController: UIViewController
         fruitsArray.shuffle()
         aQuestion()
         //遊戲開始前顯示的訊息
-        answerLabel.text = "Are you ready?"
+        answerLabel.text = "Ready?"
     }
     
     //點擊下一題按鈕，顯示下題圖片、題數、更換答案
