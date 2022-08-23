@@ -13,10 +13,12 @@ class FruitViewController: UIViewController
     @IBOutlet weak var numOfQestionSlider: UISlider!
     @IBOutlet weak var numOfQuestionLabel: UILabel!
     @IBOutlet weak var questionImage: UIImageView!
+    @IBOutlet weak var readyLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var answerBackgound: UIImageView!
+    @IBOutlet weak var decoImage: UIImageView!
     @IBOutlet weak var pronounceButton: UIButton!
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var answerButton: UIButton!
     
@@ -55,22 +57,13 @@ class FruitViewController: UIViewController
     func pronounce()
     {
         let utterance = AVSpeechUtterance(string: fruitsArray[index])
-        utterance.rate = 0.5
+        utterance.rate = 0.4
         utterance.pitchMultiplier = 1.5
         let synthesizer = AVSpeechSynthesizer()
         synthesizer.speak(utterance)
     }
-    
-    //再玩一次
-    func replayAction()
-    {
-        //打亂陣列重排，取代原陣列
-        fruitsArray.shuffle()
-        index = 0
-        aQuestion()
-        //遊戲開始前顯示的訊息
-        answerLabel.text = "Ready?"
-    }
+
+        
     
     //結束遊戲的訊息視窗
     func alertMessage()
@@ -82,7 +75,7 @@ class FruitViewController: UIViewController
         //閉包取作用域外的function，要加self.
         let okAction = UIAlertAction(title: "Sure", style: .default) { _
             in
-            self.replayAction()
+            self.start(nil)
         }
         //取消按鈕，.destructive為警告樣式，文字顯示紅色
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
@@ -100,13 +93,29 @@ class FruitViewController: UIViewController
         allFruits()
         //打亂陣列重排，取代原陣列
         fruitsArray.shuffle()
-        aQuestion()
-        //遊戲開始前顯示的訊息
-        answerLabel.text = "Ready?"
+        questionImage.isHidden = true
+        answerBackgound.isHidden = true
+        goButton.isHidden = false
+        nextButton.isHidden = true
+        answerButton.isHidden = true
+        pronounceButton.isHidden = true
+        
     }
     
-    @IBAction func start(_ sender: Any)
+    @IBAction func start(_ sender: UIButton!)
     {
+        index = 0
+        //打亂陣列重排，取代原陣列
+        fruitsArray.shuffle()
+        aQuestion()
+        questionImage.isHidden = false
+        readyLabel.isHidden = true
+        answerBackgound.isHidden = false
+        decoImage.isHidden = true
+        goButton.isHidden = true
+        nextButton.isHidden = false
+        answerButton.isHidden = false
+
     }
     
     
@@ -122,6 +131,7 @@ class FruitViewController: UIViewController
             index += 1
             aQuestion()
         }
+        answerButton.isEnabled = true
     }
         
     //點擊解答按鈕，顯示答案及發音
@@ -130,6 +140,7 @@ class FruitViewController: UIViewController
         answerLabel.text = fruitsArray[index]
         //答案公布後，顯示發音按鈕
         pronounceButton.isHidden = false
+        answerButton.isEnabled = false
         pronounce()
     }
     
