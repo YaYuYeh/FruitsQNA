@@ -14,7 +14,11 @@ class FruitViewController: UIViewController
     @IBOutlet weak var numOfQuestionLabel: UILabel!
     @IBOutlet weak var questionImage: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var answerBackgound: UIImageView!
     @IBOutlet weak var pronounceButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var answerButton: UIButton!
     
     //不使用enum直接宣告array
     //let fruitsArray = ["apple", "banana", "blueberry", "cantaloupe", "cherry", "coconut", "grape", "kiwi", "lemon", "lime", "mango", "orange", "peach", ]
@@ -46,6 +50,15 @@ class FruitViewController: UIViewController
         answerLabel.text = ""
         //答案未公布前，隱藏發音按鈕
         pronounceButton.isHidden = true
+    }
+    
+    func pronounce()
+    {
+        let utterance = AVSpeechUtterance(string: fruitsArray[index])
+        utterance.rate = 0.5
+        utterance.pitchMultiplier = 1.5
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
     }
     
     //再玩一次
@@ -92,6 +105,11 @@ class FruitViewController: UIViewController
         answerLabel.text = "Ready?"
     }
     
+    @IBAction func start(_ sender: Any)
+    {
+    }
+    
+    
     //點擊下一題按鈕，顯示下題圖片、題數、更換答案
     @IBAction func next(_ sender: Any)
     {
@@ -106,22 +124,19 @@ class FruitViewController: UIViewController
         }
     }
         
-    //點擊解答按鈕，顯示答案
+    //點擊解答按鈕，顯示答案及發音
     @IBAction func answer(_ sender: Any)
     {
         answerLabel.text = fruitsArray[index]
         //答案公布後，顯示發音按鈕
         pronounceButton.isHidden = false
+        pronounce()
     }
     
     //發音按鈕
-    @IBAction func pronounce(_ sender: Any)
+    @IBAction func speak(_ sender: Any)
     {
-        let utterance = AVSpeechUtterance(string: fruitsArray[index])
-        utterance.rate = 0.5
-        utterance.pitchMultiplier = 1.5
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
+        pronounce()
     }
     
     
