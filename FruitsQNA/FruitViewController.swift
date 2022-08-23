@@ -10,12 +10,12 @@ import AVFoundation
 
 class FruitViewController: UIViewController
 {
-    @IBOutlet weak var numOfQestionSlider: UISlider!
+    @IBOutlet weak var numOfQuestionSlider: UISlider!
     @IBOutlet weak var numOfQuestionLabel: UILabel!
     @IBOutlet weak var questionImage: UIImageView!
     @IBOutlet weak var readyLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
-    @IBOutlet weak var answerBackgound: UIImageView!
+    @IBOutlet weak var answerBackground: UIImageView!
     @IBOutlet weak var decoImage: UIImageView!
     @IBOutlet weak var pronounceButton: UIButton!
     @IBOutlet weak var goButton: UIButton!
@@ -47,8 +47,9 @@ class FruitViewController: UIViewController
     func aQuestion()
     {
         questionImage.image = UIImage(named: fruitsArray[index])
-        numOfQestionSlider.value = Float(index+1)
+        numOfQuestionSlider.value = Float(index+1)
         numOfQuestionLabel.text = "\(index+1)/10"
+        //答案未公布前，隱藏答案
         answerLabel.text = ""
         //答案未公布前，隱藏發音按鈕
         pronounceButton.isHidden = true
@@ -58,7 +59,7 @@ class FruitViewController: UIViewController
     {
         let utterance = AVSpeechUtterance(string: fruitsArray[index])
         utterance.rate = 0.4
-        utterance.pitchMultiplier = 1.5
+        utterance.pitchMultiplier = 1.3
         let synthesizer = AVSpeechSynthesizer()
         synthesizer.speak(utterance)
     }
@@ -94,7 +95,7 @@ class FruitViewController: UIViewController
         //打亂陣列重排，取代原陣列
         fruitsArray.shuffle()
         questionImage.isHidden = true
-        answerBackgound.isHidden = true
+        answerBackground.isHidden = true
         goButton.isHidden = false
         nextButton.isHidden = true
         answerButton.isHidden = true
@@ -110,7 +111,7 @@ class FruitViewController: UIViewController
         aQuestion()
         questionImage.isHidden = false
         readyLabel.isHidden = true
-        answerBackgound.isHidden = false
+        answerBackground.isHidden = false
         decoImage.isHidden = true
         goButton.isHidden = true
         nextButton.isHidden = false

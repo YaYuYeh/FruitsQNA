@@ -104,7 +104,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="md8-gM-O6s">
                                 <rect key="frame" x="59" y="503" width="296" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="52"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -149,14 +149,14 @@
                         <color key="backgroundColor" red="0.95380562540000002" green="0.9340085387" blue="0.84686404469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <connections>
-                        <outlet property="answerBackgound" destination="Nwe-Ye-UL1" id="9FK-P1-VsM"/>
+                        <outlet property="answerBackground" destination="Nwe-Ye-UL1" id="9FK-P1-VsM"/>
                         <outlet property="answerButton" destination="bPM-N5-iSG" id="x4P-re-CH4"/>
                         <outlet property="answerLabel" destination="md8-gM-O6s" id="Bib-Zr-4X5"/>
                         <outlet property="decoImage" destination="7id-fX-ehk" id="1K1-KR-C42"/>
-                        <outlet property="goButton" destination="paF-R9-nRl" id="ySi-cY-Yzt"/>
+                        <outlet property="goButton" destination="paF-R9-nRl" id="icm-Co-RUA"/>
                         <outlet property="nextButton" destination="PHf-XV-nFr" id="DkV-ix-eDn"/>
-                        <outlet property="numOfQestionSlider" destination="mbn-Zc-4BP" id="zB5-fD-stX"/>
                         <outlet property="numOfQuestionLabel" destination="UzC-E7-5D1" id="OvH-y1-Alg"/>
+                        <outlet property="numOfQuestionSlider" destination="mbn-Zc-4BP" id="zB5-fD-stX"/>
                         <outlet property="pronounceButton" destination="SxN-OZ-SJR" id="cns-00-akj"/>
                         <outlet property="questionImage" destination="koy-NA-hpb" id="5Qk-EH-8AQ"/>
                         <outlet property="readyLabel" destination="VYo-H5-iIt" id="8eq-zH-0vO"/>
@@ -164,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-439.13043478260875" y="49.553571428571423"/>
+            <point key="canvasLocation" x="-864" y="102"/>
         </scene>
     </scenes>
     <resources>
